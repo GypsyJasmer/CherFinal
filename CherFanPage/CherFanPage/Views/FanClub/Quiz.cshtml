@@ -1,0 +1,51 @@
+﻿@model CherFanPage.Models.QuizVM
+@{
+    ViewData["Title"] = "The Rock Quiz";
+}
+
+<div>
+    <h1 class="display-4">Cher Quiz</h1>
+    <form method="post" class="container">
+
+        <label asp-for="UserAnswer1" class="control-label">How many studio albums has Cher made?</label>
+        <ul>
+            <li>53</li>
+            <li>26</li>
+            <li>38</li>
+        </ul>
+        <input asp-for="UserAnswer1" type="text" class="form-control pb-1" />
+        <p>@Model?.RightOrWrong1</p>
+        <br />
+        <label asp-for="UserAnswer2">What was Cher's first lead role in a major motion picture?</label>
+        <ul>
+            <li>Mask</li>
+            <li>Silkwood</li>
+            <li>Mermaids</li>
+        </ul>
+        <input asp-for="UserAnswer2" type="text" class="form-control pb-1" />
+        <p>@Model?.RightOrWrong2</p>
+        <br />
+        <label asp-for="UserAnswer3">How long did Cher's variety show run for?</label>
+        <ul>
+            <li>3 years</li>
+            <li>2 years</li>
+            <li>1 year</li>
+        </ul>
+        <input asp-for="UserAnswer3" type="text" class="form-control pb-1" />
+        <p>@Model?.RightOrWrong3</p>
+        <br />
+
+        <label asp-for="UserAnswer4" class="control-label">What movie did Cher win an Academy Award for Best Actrtess?</label>
+        <ul>
+            <li>Mask</li>
+            <li>Moonstruck</li>
+            <li>Tea with Mussolini</li>
+        </ul>
+        <input asp-for="UserAnswer4" type="text" class="form-control pb-1" />
+        <p>@Model?.RightOrWrong1</p>
+        <br />
+
+        <br />
+        <input type="submit" class="form-control btn btn-primary" />
+    </form>
+</div>
