@@ -22,7 +22,6 @@ namespace CherFanPage.Models
 
                 /***********************Seeding a default administrator. They will need to change their password after logging in.*****************/
                 
-                
                 AppUser siteadmin = new AppUser
                 {
                     UserName = "SiteAdmin",
