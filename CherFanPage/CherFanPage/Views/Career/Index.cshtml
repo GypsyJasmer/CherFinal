@@ -6,61 +6,57 @@
     <h1 class="display-4">Cher's Career</h1>
     <p>This page is all about Cher 60 + year Career!!! </p>
 
-
     <a asp-controller="Career" asp-action="Index">Index</a>
 
     <br />
 
-    <a asp-controller="Career" asp-action="Albums">Albums</a>
-
-    <br />
-
-    <a asp-controller="Career" asp-action="Awards">Awards</a>
-
-    <br />
-
-    <a asp-controller="Career" asp-action="Film">Films</a>
-
-    <br />
-
-    <a asp-controller="Career" asp-action="Tours">Tours</a>
-
-    <br />
-
-    <a asp-controller="Career" asp-action="TV">TV</a>
-
-
-    <br />
-
-</div>
-
-<div>
-    <ul>
+    <ul class="links">
         <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05466_kwlv0n.jpg" alt="A Toyota Previa covered in graffiti" loading="lazy">
+            <a href="@Url.Action("Albums", "Career")" title="Albums" class="links">
+                <img alt="CherAlbums" width="250" height="250" src="@Url.Content("~/FinalImages/CherAlbums_icon.png")">
+
+            </a>
         </li>
         <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05621_zgtcco.jpg" alt="Interesting living room light through a window" loading="lazy">
+            <a href="@Url.Action("Awards", "Career")" title="Awards" class="links">
+                <img alt="CherAwards" width="250" height="250" src="@Url.Content("~/FinalImages/CherAwards_icon.png")">
+
+            </a>
         </li>
         <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05513_gfbiwi.jpg" alt="Sara on a red bike" loading="lazy">
+            <a href="@Url.Action("Films", "Career")" title="Films" class="links">
+                <img alt="CherMovies" width="250" height="250" src="@Url.Content("~/FinalImages/CherFilm_icon.png")">
+
+            </a>
         </li>
         <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05588_nb0dma.jpg" alt="XOXO venue in between talks" loading="lazy">
+            <a href="@Url.Action("TV", "Career")" title="TV" class="links">
+                <img alt="CherTV"  width="250" height="250" src="@Url.Content("~/FinalImages/CherTV.png")">
+
+            </a>
         </li>
-        <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05459_ziuomy.jpg" alt="Trees lit by green light during dusk" loading="lazy">
-        </li>
-        <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05586_oj8jfo.jpg" alt="Portrait of Justin Pervorse" loading="lazy">
-        </li>
-        <li>
-            <img src="https://res.cloudinary.com/css-tricks/image/upload/f_auto,q_auto/v1568814785/photostream-photos/DSC05465_dtkwef.jpg" alt="Empty bike racks outside a hotel" loading="lazy">
-        </li>
-        
-        <!--  Adding an empty <li> here so the final photo doesn't stretch like crazy. Try removing it and see what happens!  -->
-        <li></li>
     </ul>
 
+    <style type="text/css">
+        ul.links {
+            list-style-type: none;
+        }
+
+            ul.links li {
+                display: inline-block;
+                border-left: 1px solid black;
+                padding-left: 10px;
+                margin-left: 10px;
+            }
+
+                ul.links li:first-child {
+                    border-left: 0;
+                    padding-left: 0;
+                    margin-left: 0;
+                }
+    </style>
+
 </div>
+
+
 
