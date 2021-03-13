@@ -12,5 +12,25 @@ namespace CherFanPage.Controllers
         {
             return View();
         }
+
+        public IActionResult Sixties()
+        {
+            return View();
+        }
+
+        public IActionResult Seventies()
+        {
+            return View();
+        }
+
+        public IActionResult Eighties()
+        {
+            return View();
+        }
+
+        public IActionResult Ninties()
+        {
+            return View();
+        }
     }
 }
