@@ -1,1 +1,62 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Fashion";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cher's Fashion</h1>
+    <p>This page is all about Cher's Fashion </p>
+
+    <a asp-controller="Fashion" asp-action="Index">Index</a>
+
+    <br />
+
+    <ul class="links">
+        <li>
+            <a href="@Url.Action("1960", "Fashion")" title="1960's Fashion" class="links">
+                <img alt="1960 Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1960Cher_icon.png")">
+
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("1970", "Fashion")" title="1970's Fashion" class="links"> 
+                <img alt="1970's Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1970Cher_icon.png")">
+
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("1980", "Fashion")" title="1980's Fashion" class="links">
+                <img alt="1980's Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1980Cher_icon.png")">
+
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("19990", "Fashion")" title="1990's Fashion" class="links">
+                <img alt="1990 Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1990Cher_icon.png")">
+
+            </a>
+        </li>
+    </ul>
+
+    <style type="text/css">
+        ul.links {
+            list-style-type: none;
+        }
+
+            ul.links li {
+                display: inline-block;
+                border-left: 1px solid black;
+                padding-left: 10px;
+                margin-left: 10px;
+            }
+
+                ul.links li:first-child {
+                    border-left: 0;
+                    padding-left: 0;
+                    margin-left: 0;
+                }
+    </style>
+
+</div>
+
+
+

@@ -17,7 +17,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
                 <div class="container">
                     <a class="navbar-brand" href="#">
-                        <img src="https://lh3.googleusercontent.com/proxy/xO6U6BpKNm2-qYgvgIEoBVrYG0GYVko1zJEVACfWudWWZihGoj4vWnOwzK5PIHCP1dJChyyk-k1VNiel0kexnJzboJ4iZhgQfj3sqVVGt0B3gec4ZAJ9Teg" alt="CherLogo">
+                        <img src="~/FinalImages/logo1.jpg" alt="CherLogo" height="100">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -39,17 +39,17 @@
                             @if (signInManager.IsSignedIn(User))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account"
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Account"
                                        asp-action="LogOut">Logout</a> &nbsp; @User.Identity.Name
                                 </li>
                             }
                             else
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                                 </li>
                             }
 

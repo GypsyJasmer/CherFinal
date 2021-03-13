@@ -9,17 +9,41 @@
 
     <br />
 
-    <a asp-controller="FanClub" asp-action="Quiz">Cher Quiz</a>
+    <ul class="links">
+        <li>
+            <a href="@Url.Action("Quiz", "FanClub")" title="Cher Quiz" class="links">
+                <img alt="Cher Quiz" width="250" height="250" src="@Url.Content("~/FinalImages/Quiz.png")">
 
-    <br />
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Stories", "FanClub")" title="Cher Stories" class="links">
+                <img alt="Cher Stories" width="250" height="250" src="@Url.Content("~/FinalImages/Stories.png")">
 
-    <a asp-controller="FanClub" asp-action="Stories">Stories</a>
-
-    <br />
+            </a>
+        </li>
+    </ul>
 
     <a asp-controller="FanClub" asp-action="AllStories">View All Stories</a><br />
 
+    <style type="text/css">
+        ul.links {
+            list-style-type: none;
+        }
 
+            ul.links li {
+                display: inline-block;
+                border-left: 1px solid black;
+                padding-left: 10px;
+                margin-left: 10px;
+            }
+
+                ul.links li:first-child {
+                    border-left: 0;
+                    padding-left: 0;
+                    margin-left: 0;
+                }
+    </style>
 </div>
 
 
