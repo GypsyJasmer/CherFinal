@@ -14,6 +14,7 @@ using CherFanPage.Models.DM;
 using Telerik.Web.Mvc.Extensions;
 
 
+
 namespace CherFanPage.Controllers
 {
     public class FanClubController : Controller
