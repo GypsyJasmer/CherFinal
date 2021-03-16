@@ -10,8 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using CherFanPage.Models;
 using CherFanPage.Repos;
-using CherFanPage.Models.DM;
-using Telerik.Web.Mvc.Extensions;
+
 
 
 
@@ -182,50 +181,7 @@ namespace CherFanPage.Controllers
 
 
 
-        /*****************Timeline METHODS*******************/
-        public JsonResult GetTimelineData()
-        {
-            List<TimelineModel> events = new List<TimelineModel>();
-
-            events.Add(new TimelineModel()
-            {
-                Title = "Barcelona \u0026 Tenerife",
-                Subtitle = "May 15, 2015",
-                Description = "First event description.",
-                EventDate = new System.DateTime(2015, 4, 15),
-
-                Actions = new List<TimelineEventAction>() {
-                new TimelineEventAction() { text = "More info about Barcelona", url="https://en.wikipedia.org/wiki/Barcelona" }
-            }
-            });
-
-            events.Add(new TimelineModel()
-            {
-                Title = "United States East Coast Tour",
-                Subtitle = "Feb 27, 2018",
-                Description = "The second event description.",
-                EventDate = new System.DateTime(2018, 1, 27),
-
-                Actions = new List<TimelineEventAction>() {
-                new TimelineEventAction() { text = "More info about New York City", url="https://en.wikipedia.org/wiki/New_York_City" }
-            }
-            });
-
-            events.Add(new TimelineModel()
-            {
-                Title = "Malta, a Country of Кnights",
-                Subtitle = "My second trip this year",
-                Description = "Third event description.",
-                EventDate = new System.DateTime(2015, 5, 25),
-
-                Actions = new List<TimelineEventAction>() {
-                new TimelineEventAction() { text = "More info about Malta", url="https://en.wikipedia.org/wiki/Malta" }
-            }
-            });
-
-
-            return Json(events);
-        }
+        
     }
 
 }
