@@ -10,6 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using CherFanPage.Models;
 using CherFanPage.Repos;
+using CherFanPage.Models.DM;
+using Telerik.Web.Mvc.Extensions;
+
+
 
 namespace CherFanPage.Controllers
 {
@@ -28,7 +32,7 @@ namespace CherFanPage.Controllers
             userManager = u;
         }
 
-/***************CONTROLLER VIEWS************/
+        /***************CONTROLLER VIEWS************/
         public IActionResult Index()
         {
             return View();
@@ -39,10 +43,16 @@ namespace CherFanPage.Controllers
             return View();
         }
 
+        public IActionResult Timeline()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -95,11 +105,11 @@ namespace CherFanPage.Controllers
                 repo.AddStory(model);
 
             }
-               
-            return View(model);           
+
+            return View(model);
         }
 
- /***********SEE ALL STORIES SUBMITTED METHODS******************/     
+        /***********SEE ALL STORIES SUBMITTED METHODS******************/
         [HttpPost]
         public IActionResult AllStories(string storyTitle, string SubmitterName)
         {
@@ -121,7 +131,7 @@ namespace CherFanPage.Controllers
 
             return View(stories);
         }
-        
+
 
         //this method will send data to the webpage
         public IActionResult AllStories()
@@ -133,17 +143,17 @@ namespace CherFanPage.Controllers
             List<StoryModel> allStories = repo.Stories.ToList<StoryModel>();//Submitter comes from StoryModel model, it is the User FK
             //sent to a new view (to be created)
             return View(allStories);
-            
+
         }
 
 
- /*****************COMMENT METHODS*******************/
+        /*****************COMMENT METHODS*******************/
         // bring up the form for entering a comment
         [Authorize] //allows the user to not open form unless logged in
         [HttpGet]
         public IActionResult Comment(int storyID)
         {
-            var commentVM = new CommentVM {StoryID = storyID };
+            var commentVM = new CommentVM { StoryID = storyID };
             return View(commentVM);
 
         }
@@ -156,12 +166,12 @@ namespace CherFanPage.Controllers
             var comment = new Comment { CommentText = commentVM.CommentText }; // User input
             comment.Commenter = userManager.GetUserAsync(User).Result; // Get user from UserManager
             comment.Commenter.Name = comment.Commenter.UserName;
-            comment.CommentDate = DateTime.Now; 
+            comment.CommentDate = DateTime.Now;
 
             // Retrieve the story the comment is for
             var story = (from r in repo.Stories
-                           where r.StoryID == commentVM.StoryID
-                           select r).First<StoryModel>();
+                         where r.StoryID == commentVM.StoryID
+                         select r).First<StoryModel>();
 
             // Store the message with the comment in the database
             story.Comments.Add(comment);
@@ -170,6 +180,54 @@ namespace CherFanPage.Controllers
             return RedirectToAction("allStories");
         }
 
+
+
+        /*****************Timeline METHODS*******************/
+        public JsonResult GetTimelineData()
+        {
+            List<TimelineModel> events = new List<TimelineModel>();
+
+            events.Add(new TimelineModel()
+            {
+                Title = "Barcelona \u0026 Tenerife",
+                Subtitle = "May 15, 2015",
+                Description = "First event description.",
+                EventDate = new System.DateTime(2015, 4, 15),
+
+                Actions = new List<TimelineEventAction>() {
+                new TimelineEventAction() { text = "More info about Barcelona", url="https://en.wikipedia.org/wiki/Barcelona" }
+            }
+            });
+
+            events.Add(new TimelineModel()
+            {
+                Title = "United States East Coast Tour",
+                Subtitle = "Feb 27, 2018",
+                Description = "The second event description.",
+                EventDate = new System.DateTime(2018, 1, 27),
+
+                Actions = new List<TimelineEventAction>() {
+                new TimelineEventAction() { text = "More info about New York City", url="https://en.wikipedia.org/wiki/New_York_City" }
+            }
+            });
+
+            events.Add(new TimelineModel()
+            {
+                Title = "Malta, a Country of Кnights",
+                Subtitle = "My second trip this year",
+                Description = "Third event description.",
+                EventDate = new System.DateTime(2015, 5, 25),
+
+                Actions = new List<TimelineEventAction>() {
+                new TimelineEventAction() { text = "More info about Malta", url="https://en.wikipedia.org/wiki/Malta" }
+            }
+            });
+
+
+            return Json(events);
+        }
     }
+
 }
+
 

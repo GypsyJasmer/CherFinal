@@ -1,33 +1,65 @@
 ﻿@{
-    ViewData["Title"] = "Career";
+    ViewData["Title"] = "Fashion";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Cher's Career</h1>
-    <p>This page is all about Cher 60 + year Career!!! </p>
+    <h1 class="display-4">Cher's Fashion</h1>
+    <p>This page is all about Cher's Fashion </p>
 
-
-    <a asp-controller="Career" asp-action="Index">Index</a>
-
-    <br />
-
-    <a asp-controller="Career" asp-action="Albums">Albums</a>
+    <a asp-controller="Fashion" asp-action="Index">Index</a>
 
     <br />
 
-    <a asp-controller="Career" asp-action="Awards">Awards</a>
+    <ul class="links">
+        <li>
+            <a href="@Url.Action("Sixties", "Fashion")" title="1960's Fashion" class="links">
+                <img alt="1960 Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1960Cher_icon.png")">
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Seventies", "Fashion")" title="1970's Fashion" class="links">
+                <img alt="1970's Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1970Cher_icon.png")">
 
+            </a>
+        </li>
+    </ul>
     <br />
-
-    <a asp-controller="Career" asp-action="Film">Films</a>
-
     <br />
+    <ul class="links">
+        <li>
+            <a href="@Url.Action("Eighties", "Fashion")" title="1980's Fashion" class="links">
+                <img alt="1980's Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1980Cher_icon.png")">
 
-    <a asp-controller="Career" asp-action="TV">TV</a>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Ninties", "Fashion")" title="1990's Fashion" class="links">
+                <img alt="1990 Fashion" width="250" height="250" src="@Url.Content("~/FinalImages/1990Cher_icon.png")">
 
+            </a>
+        </li>
+    </ul>
 
-    <br />
+    <style type="text/css">
+        ul.links {
+            list-style-type: none;
+        }
 
+            ul.links li {
+                display: inline-block;
+                border-left: 1px solid black;
+                padding-left: 10px;
+                margin-left: 10px;
+            }
+
+                ul.links li:first-child {
+                    border-left: 0;
+                    padding-left: 0;
+                    margin-left: 0;
+                }
+    </style>
 
 </div>
+
+
 
