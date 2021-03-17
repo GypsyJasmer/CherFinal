@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Favorite Outfit";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cher's Fashion</h1>
+    <p>Pick your favorite outfit of Cher's </p>
+
+    <a asp-controller="Fashion" asp-action="Index">Index</a>
+
+
+</div>
+
+
+
+div class="text-center">
+<h2>My Favorites</h2>
+<form asp-action="Delete" method="post">
+    <a asp-action="Index" asp-controller="Fashion" class="btn btn-primary"
+       asp-route-activeConf="@Model.ActiveConf">
+        Back to Fashion Main Page
+    </a>
+    <button type="submit" class="btn btn-primary">
+        Clear Favorites
+    </button>
+</form>
+<br />
+
+
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <ul class="list-group">
+            @foreach (Outfit outfit in Model.Outfits)
+            {
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img src="~/images/@outfit.LogoImage" alt="" />
+                        </div>
+                        <div class="col-sm-4">
+                            @outfit.Title
+                        </div>
+                        <div class="col-sm-4">
+                            @outfit.Decade
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
