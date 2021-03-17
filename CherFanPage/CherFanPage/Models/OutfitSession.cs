@@ -29,7 +29,7 @@ namespace CherFanPage.Models
 
 
 
-        public void RemoveMyTeams() {
+        public void RemoveMyOutfits() {
             session.Remove(OutfitKey);
             session.Remove(CountKey);
         }

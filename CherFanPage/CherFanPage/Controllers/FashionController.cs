@@ -49,24 +49,24 @@ namespace CherFanPage.Controllers
 
             return View(model);
         }
-        /*
+        
         [HttpPost]
         public RedirectToActionResult Delete()
         {
-            var session = new NFLSession(HttpContext.Session);
-            var cookies = new NFLCookies(HttpContext.Response.Cookies);
+            var session = new OutfitSession(HttpContext.Session);
+            var cookies = new CherCookies(HttpContext.Response.Cookies);
 
-            session.RemoveMyTeams();
-            cookies.RemoveMyTeamIds();
+            session.RemoveMyOutfits();
+            cookies.RemoveMyOutfitIds();
 
-            TempData["message"] = "Favorite teams cleared";
+            TempData["message"] = "Favorite outfits cleared";
 
             return RedirectToAction("Index", "Home",
                 new
                 {
-                    ActiveConf = session.GetActiveConf(),
-                    ActiveDiv = session.GetActiveDiv()
-                });
-        } */
+                    ActiveConf = session.GetActiveOutfitYear()
+                    
+                }) ;
+        } 
     }
 }
