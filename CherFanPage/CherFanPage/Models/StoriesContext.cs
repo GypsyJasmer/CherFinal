@@ -19,5 +19,13 @@ namespace CherFanPage.Models
 
         // public DbSet<AppUser> Users { get; set; }
 
+        public DbSet<Outfit> Outfits { get; set; }
+        public DbSet<OutfitYear> OutfitYear { get; set; }
+
+
+
+
     }
+
+
 }

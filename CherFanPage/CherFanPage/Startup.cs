@@ -27,7 +27,14 @@ namespace CherFanPage
         // This method gets called by the runtime. Use this method to add services to the container..
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            //must be called before AddControllersWithViews 
+            //NFL ch 9 example for sessions 
+            services.AddRouting(options => options.LowercaseUrls = true);
+
+            services.AddMemoryCache();
+            services.AddSession();
+
+            services.AddControllersWithViews().AddNewtonsoftJson();
 
             // inject our repositories into our controllers
             services.AddTransient<IStoriesRepo, StoriesRepo>(); // Repository Interface, Repository Class in the generics
@@ -62,7 +69,9 @@ namespace CherFanPage
             app.UseAuthentication();
 
             //Identity and Security starting
-            app.UseAuthorization();          
+            app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
