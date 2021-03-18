@@ -5,7 +5,7 @@
 | Course  number, lab number and lab group             | CS 296                                       |
 | Developer                                            | Sandi Jasmer                                 |
 | URL  for the project repository and branch on GitHub | https://github.com/GypsyJasmer/CherFinal.git |
-| URL  on a server (if it has been published)          |                                              |
+| URL  on a server (if it has been published)          | http://jasmers-001-site2.ctempurl.com/       |
 | Reviewer  and Date                                   | Sandi Jasmer 3/17/21                         |
 
 ###  Instructions
@@ -33,7 +33,7 @@ Add explanatory comments in the row following any "no" answers.
 | Does the style conform to C# coding conventions?             |          | Yes         |
 |                                                              |          |             |
 | Does the solution meet all the requirements?                 |          | No          |
-| I am short one working Domain Model.                         |          |             |
+| I am short one working Domain Model. The tables show up in the database however the site is not populating the loop through the outfits. |          |             |
 |                                                              |          |             |
 |                                                              |          |             |
 
@@ -43,7 +43,7 @@ Comments:
 
 *Zap branch is not merged because it messes with my DB however I ran and have the report included in the branch.https://github.com/GypsyJasmer/CherFinal/tree/Zappers
 
-*
+
 
  
 

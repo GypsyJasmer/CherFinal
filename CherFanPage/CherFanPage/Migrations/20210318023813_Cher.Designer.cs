@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CherFanPage.Migrations
 {
     [DbContext(typeof(StoriesContext))]
-    [Migration("20210311071903_FixedMarch")]
-    partial class FixedMarch
+    [Migration("20210318023813_Cher")]
+    partial class Cher
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,40 @@ namespace CherFanPage.Migrations
                     b.HasIndex("StoryModelStoryID");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("CherFanPage.Models.Outfit", b =>
+                {
+                    b.Property<string>("OutfitID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DecadeOutfitYearID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LogoImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OutfitID");
+
+                    b.HasIndex("DecadeOutfitYearID");
+
+                    b.ToTable("Outfits");
+                });
+
+            modelBuilder.Entity("CherFanPage.Models.OutfitYear", b =>
+                {
+                    b.Property<string>("OutfitYearID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Decade")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OutfitYearID");
+
+                    b.ToTable("OutfitYear");
                 });
 
             modelBuilder.Entity("CherFanPage.Models.StoryModel", b =>
@@ -301,6 +335,13 @@ namespace CherFanPage.Migrations
                     b.HasOne("CherFanPage.Models.StoryModel", null)
                         .WithMany("Comments")
                         .HasForeignKey("StoryModelStoryID");
+                });
+
+            modelBuilder.Entity("CherFanPage.Models.Outfit", b =>
+                {
+                    b.HasOne("CherFanPage.Models.OutfitYear", "Decade")
+                        .WithMany()
+                        .HasForeignKey("DecadeOutfitYearID");
                 });
 
             modelBuilder.Entity("CherFanPage.Models.StoryModel", b =>

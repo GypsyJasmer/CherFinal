@@ -3,42 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CherFanPage.Migrations
 {
-    public partial class Identity : Migration
+    public partial class Cher : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Stories_Users_EmailUserID",
-                table: "Stories");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Stories_Users_SubmitterUserID",
-                table: "Stories");
-
-            migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Stories_EmailUserID",
-                table: "Stories");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Stories_SubmitterUserID",
-                table: "Stories");
-
-            migrationBuilder.DropColumn(
-                name: "EmailUserID",
-                table: "Stories");
-
-            migrationBuilder.DropColumn(
-                name: "SubmitterUserID",
-                table: "Stories");
-
-            migrationBuilder.AddColumn<string>(
-                name: "SubmitterId",
-                table: "Stories",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -73,12 +41,23 @@ namespace CherFanPage.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    UserID = table.Column<int>(nullable: true),
                     Name = table.Column<string>(maxLength: 60, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OutfitYear",
+                columns: table => new
+                {
+                    OutfitYearID = table.Column<string>(nullable: false),
+                    Decade = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OutfitYear", x => x.OutfitYearID);
                 });
 
             migrationBuilder.CreateTable(
@@ -187,10 +166,75 @@ namespace CherFanPage.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Stories_SubmitterId",
-                table: "Stories",
-                column: "SubmitterId");
+            migrationBuilder.CreateTable(
+                name: "Stories",
+                columns: table => new
+                {
+                    StoryID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(maxLength: 100, nullable: false),
+                    StoryText = table.Column<string>(nullable: false),
+                    SubmitterId = table.Column<string>(nullable: true),
+                    DateSubmitted = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stories", x => x.StoryID);
+                    table.ForeignKey(
+                        name: "FK_Stories_AspNetUsers_SubmitterId",
+                        column: x => x.SubmitterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Outfits",
+                columns: table => new
+                {
+                    OutfitID = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    DecadeOutfitYearID = table.Column<string>(nullable: true),
+                    LogoImage = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Outfits", x => x.OutfitID);
+                    table.ForeignKey(
+                        name: "FK_Outfits_OutfitYear_DecadeOutfitYearID",
+                        column: x => x.DecadeOutfitYearID,
+                        principalTable: "OutfitYear",
+                        principalColumn: "OutfitYearID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    CommentID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommentText = table.Column<string>(nullable: true),
+                    CommentDate = table.Column<DateTime>(nullable: false),
+                    CommenterId = table.Column<string>(nullable: true),
+                    StoryModelStoryID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.CommentID);
+                    table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_CommenterId",
+                        column: x => x.CommenterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Stories_StoryModelStoryID",
+                        column: x => x.StoryModelStoryID,
+                        principalTable: "Stories",
+                        principalColumn: "StoryID",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -231,21 +275,29 @@ namespace CherFanPage.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Stories_AspNetUsers_SubmitterId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_CommenterId",
+                table: "Comments",
+                column: "CommenterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_StoryModelStoryID",
+                table: "Comments",
+                column: "StoryModelStoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Outfits_DecadeOutfitYearID",
+                table: "Outfits",
+                column: "DecadeOutfitYearID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Stories_SubmitterId",
                 table: "Stories",
-                column: "SubmitterId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                column: "SubmitterId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Stories_AspNetUsers_SubmitterId",
-                table: "Stories");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -262,70 +314,22 @@ namespace CherFanPage.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "Outfits");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Stories");
+
+            migrationBuilder.DropTable(
+                name: "OutfitYear");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Stories_SubmitterId",
-                table: "Stories");
-
-            migrationBuilder.DropColumn(
-                name: "SubmitterId",
-                table: "Stories");
-
-            migrationBuilder.AddColumn<int>(
-                name: "EmailUserID",
-                table: "Stories",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "SubmitterUserID",
-                table: "Stories",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserID);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Stories_EmailUserID",
-                table: "Stories",
-                column: "EmailUserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Stories_SubmitterUserID",
-                table: "Stories",
-                column: "SubmitterUserID");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Stories_Users_EmailUserID",
-                table: "Stories",
-                column: "EmailUserID",
-                principalTable: "Users",
-                principalColumn: "UserID",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Stories_Users_SubmitterUserID",
-                table: "Stories",
-                column: "SubmitterUserID",
-                principalTable: "Users",
-                principalColumn: "UserID",
-                onDelete: ReferentialAction.Restrict);
         }
     }
 }
