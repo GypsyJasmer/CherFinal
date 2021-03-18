@@ -30,24 +30,39 @@
 
 
 <div class="row">
-    <div class="col-8 offset-2">
-        <ul class="list-group">
-            @foreach (Outfit outfit in Model.Outfits)
+    <div class="col-sm-3">
+        @* <h3 class="mt-3">Conference</h3>
+
+        <div class="list-group">
+            @foreach (OutfitYear oy in Model.OutfitYears)
             {
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img src="~/FavOutfits/@outfit.LogoImage" alt="" />
-                        </div>
-                        <div class="col-sm-4">
-                            @outfit.Title
-                        </div>
-                        <div class="col-sm-4">
-                            @outfit.Decade
-                        </div>
-                    </div>
-                </li>
+                <a asp-action="Index"
+                   asp-route-activeConf="@oy.OutfitYearID"
+                   class="list-group-item @Model.CheckActiveOutfitYear(oy.OutfitYearID)">
+                    @oy.Decade
+                </a>
             }
-        </ul>
+        </div>
+        *@
+        <div class="col-8 offset-2">
+            <ul class="list-group">
+                @foreach (Outfit outfit in Model.Outfits)
+                {
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="~/FavOutfits/@outfit.LogoImage" alt="" />
+                            </div>
+                            <div class="col-sm-4">
+                                @outfit.Title
+                            </div>
+                            <div class="col-sm-4">
+                                @outfit.Decade
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 </div>

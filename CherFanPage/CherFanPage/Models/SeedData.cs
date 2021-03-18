@@ -109,14 +109,30 @@ namespace CherFanPage.Models
                 Outfit JC=new Outfit{ OutfitID = "JC", Title = "Just Cher",  LogoImage = "1960JustCher.png" };
                 context.Outfits.Add(JC);
                 context.SaveChanges();
-                //new { OutfitID = "SC", Title = "Sonny & Cher", Decade = "1960's", LogoImage = "1960SonnynCher.png" };
-                //new { OutfitID = "HB", Title = "Half Breed", Decade = "1970's", LogoImage = "1970HalfBreed.png" };
-                //new { OutfitID = "D1", Title = "Disco 1", Decade = "1970's", LogoImage = "1970Part2.png" };
-                //new { OutfitID = "D2", Title = "Egypt Cher", Decade = "1970's", LogoImage = "1970Random.png" };
-                //new { OutfitID = "D3", Title = "Take Me Home", Decade = "1970's", LogoImage = "1970TakeMeHome.png" };
-                // new { OutfitID = "A1", Title = "Award #1", Decade = "1980's", LogoImage = "1980Award1.png" };
-                //new { OutfitID = "A2", Title = "Bob Mackey", Decade = "1980's", LogoImage = "1980BobM.png" };
-                // new { OutfitID = "2000", Title = "Current Tour Cher", Decade = "2000's", LogoImage = "2000FB.png" };
+                Outfit SC = new Outfit { OutfitID = "SC", Title = "Sonny & Cher",  LogoImage = "1960SonnynCher.png" };
+                context.Outfits.Add(SC);
+                context.SaveChanges();
+                Outfit HB = new Outfit { OutfitID = "HB", Title = "Half Breed",  LogoImage = "1970HalfBreed.png" };
+                context.Outfits.Add(HB);
+                context.SaveChanges();
+                Outfit D1 = new Outfit { OutfitID = "D1", Title = "Disco 1",  LogoImage = "1970Part2.png" };
+                context.Outfits.Add(D1);
+                context.SaveChanges();
+                Outfit D2 = new Outfit { OutfitID = "D2", Title = "Egypt Cher",  LogoImage = "1970Random.png" };
+                context.Outfits.Add(D2);
+                context.SaveChanges();
+                Outfit D3 = new Outfit { OutfitID = "D3", Title = "Take Me Home",  LogoImage = "1970TakeMeHome.png" };
+                context.Outfits.Add(D3);
+                context.SaveChanges();
+                Outfit A1 = new Outfit { OutfitID = "A1", Title = "Award #1",  LogoImage = "1980Award1.png" };
+                context.Outfits.Add(A1);
+                context.SaveChanges();
+                Outfit A2 = new Outfit { OutfitID = "A2", Title = "Bob Mackey",  LogoImage = "1980BobM.png" };
+                context.Outfits.Add(A2);
+                context.SaveChanges();
+                Outfit B1 = new Outfit { OutfitID = "B1", Title = "Current Tour Cher",  LogoImage = "2000FB.png" };
+                context.Outfits.Add(B1);
+                context.SaveChanges();
 
 
 

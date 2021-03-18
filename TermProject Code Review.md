@@ -41,7 +41,7 @@ Comments:
 
 *My last Domain Models are tied to favorite outfit. Ch 9 in our book has an example of picking your favorite NFL team and they have three Domain Models tied to it, team, conference and division. I just have two one for oufits with the images and the other outfit year which was to take the place of conference. I had to add sessions and cookies and enable in startup too. One thing that I did differently to work with my project was seeding the data. It was suggested to add OnModelCreating to the context. This wasn't working since I seed my data different I was getting errors about it until I put into my seed data and removed from context. The data shows up in my database though just not populating on the view Favorite under Fashion controller. 
 
-*Zap branch is not merged because it messes with my DB however I ran and have the report included in the branch. https://github.com/GypsyJasmer/CherFinal.git 
+*Zap branch is not merged because it messes with my DB however I ran and have the report included in the branch.https://github.com/GypsyJasmer/CherFinal/tree/Zappers
 
 *
 
